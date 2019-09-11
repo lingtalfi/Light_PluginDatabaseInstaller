@@ -76,4 +76,15 @@ At least we give the developer a tool helping him to uninstall the db part of li
 
 
 
+We do not install all registered plugins automatically
+------------------
+Because we have the list of all plugins registered, it would be tempting to subscribe to the [initializer](https://github.com/lingtalfi/Light_Initializer/) service
+and initializes all our plugins at once. That would be an error though, because the initializer service handles the order in which the
+services are called, and we don't.
+
+In other words, if there is some table dependency, that's handled at the initializer service level.
+We are just providing a tool for the plugins to save a call to a database, but we don't handle table dependencies. 
+
+
+
 

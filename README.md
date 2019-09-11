@@ -66,6 +66,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.1.1 -- 2019-09-11
+
+    - update conception notes
+    
 - 1.1.0 -- 2019-09-11
 
     - update LightPluginDatabaseInstallerService->registerInstaller method, now accepts callables
