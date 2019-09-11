@@ -53,6 +53,11 @@ Here is the content of the service configuration file:
 ```yaml
 plugin_database_installer:
     instance: Ling\Light_PluginDatabaseInstaller\Service\LightPluginDatabaseInstallerService
+    methods:
+        setAppDir:
+            dir: ${app_dir}
+
+
 
 ```
 
@@ -66,6 +71,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.1.2 -- 2019-09-11
+
+    - fix bad service initialization
+    
 - 1.1.1 -- 2019-09-11
 
     - update conception notes
