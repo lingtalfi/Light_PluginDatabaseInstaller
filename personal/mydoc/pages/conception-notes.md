@@ -43,7 +43,7 @@ And so yes, we take the second approach in this planet.
 Now from a performance standpoint, connecting to a database can be considered a time consuming operation.
 And so we won't connect to the database, but we will rather tell the plugin if it has already been installed or not.
 
-If it has not, then we tell him to install itself (via an interface method that we provide), so that the plugin can creates its tables.
+If it has not, then we tell him to install itself (via an interface method that we provide, or callables if that's more suitable for the developer), so that the plugin can creates its tables.
 
 We do the install checking by simply creating one babyYaml file per plugin in the config/data/Light_PluginInstallHelper directory.
 For instance, if the pluginA has been installed, we create the **pluginA.installed** file.

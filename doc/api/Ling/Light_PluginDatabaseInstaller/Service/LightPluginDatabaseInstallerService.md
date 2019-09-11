@@ -30,13 +30,14 @@ class <span class="pl-k">LightPluginDatabaseInstallerService</span>  {
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/__construct.md)() : void
-    - public [registerInstaller](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/registerInstaller.md)(string $pluginName, [Ling\Light_PluginDatabaseInstaller\LightPluginDatabaseInstallerInterface](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/LightPluginDatabaseInstallerInterface.md) $installer) : void
+    - public [registerInstaller](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/registerInstaller.md)(string $pluginName, ?$installer) : void
     - public [install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/install.md)(string $pluginName) : void
     - public [isInstalled](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/isInstalled.md)(string $pluginName) : bool
     - public [uninstall](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/uninstall.md)(string $pluginName) : void
     - public [uninstallAll](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/uninstallAll.md)() : void
     - public [setAppDir](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/setAppDir.md)(string $appDir) : void
     - protected [getFilePath](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/getFilePath.md)(string $pluginName) : string
+    - protected [executeByPluginName](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/executeByPluginName.md)(string $pluginName, string $method) : void
 
 }
 
@@ -73,6 +74,7 @@ Methods
 - [LightPluginDatabaseInstallerService::uninstallAll](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/uninstallAll.md) &ndash; Uninstalls the database parts for all plugins (which database part was previously installed).
 - [LightPluginDatabaseInstallerService::setAppDir](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/setAppDir.md) &ndash; Sets the appDir.
 - [LightPluginDatabaseInstallerService::getFilePath](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/getFilePath.md) &ndash; Returns the path to the **pluginA.installed** file for the given plugin.
+- [LightPluginDatabaseInstallerService::executeByPluginName](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/executeByPluginName.md) &ndash; Executes the given method for the given plugin.
 
 
 

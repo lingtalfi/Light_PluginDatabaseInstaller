@@ -41,11 +41,17 @@ class LightPluginDatabaseInstallerService
 
     /**
      * Registers the given installer for the given plugin.
+     * The installer can be one of:
+     *
+     * - LightPluginDatabaseInstallerInterface instance
+     * - array of [installer callable, uninstaller callable]
+     *
+     *
      *
      * @param string $pluginName
-     * @param LightPluginDatabaseInstallerInterface $installer
+     * @param $installer
      */
-    public function registerInstaller(string $pluginName, LightPluginDatabaseInstallerInterface $installer)
+    public function registerInstaller(string $pluginName, $installer)
     {
         $this->installers[$pluginName] = $installer;
     }
@@ -60,7 +66,7 @@ class LightPluginDatabaseInstallerService
     public function install(string $pluginName)
     {
         if (array_key_exists($pluginName, $this->installers)) {
-            $this->installers[$pluginName]->install();
+            $this->executeByPluginName($pluginName, "install");
             $installFile = $this->getFilePath($pluginName);
             FileSystemTool::mkfile($installFile, '');
 
@@ -90,7 +96,7 @@ class LightPluginDatabaseInstallerService
     public function uninstall(string $pluginName)
     {
         if (array_key_exists($pluginName, $this->installers)) {
-            $this->installers[$pluginName]->uninstall();
+            $this->executeByPluginName($pluginName, "uninstall");
             $installFile = $this->getFilePath($pluginName);
             FileSystemTool::remove($installFile);
 
@@ -103,10 +109,10 @@ class LightPluginDatabaseInstallerService
     public function uninstallAll()
     {
         $installDir = $this->appDir . "/config/data/Light_PluginDatabaseInstaller";
-        $files = YorgDirScannerTool::getFilesWithExtension($installDir,'installed',false);
-        foreach($files as $file){
+        $files = YorgDirScannerTool::getFilesWithExtension($installDir, 'installed', false);
+        foreach ($files as $file) {
             $pluginName = substr(basename($file), 0, -10);
-            $this->installers[$pluginName]->uninstall();
+            $this->executeByPluginName($pluginName, "uninstall");
             FileSystemTool::remove($file);
         }
     }
@@ -139,5 +145,26 @@ class LightPluginDatabaseInstallerService
     protected function getFilePath(string $pluginName): string
     {
         return $this->appDir . "/config/data/Light_PluginDatabaseInstaller/$pluginName.installed";
+    }
+
+
+    /**
+     * Executes the given method for the given plugin.
+     *
+     * @param string $pluginName
+     * @param string $method
+     */
+    protected function executeByPluginName(string $pluginName, string $method)
+    {
+        $installer = $this->installers[$pluginName];
+        if ($installer instanceof LightPluginDatabaseInstallerInterface) {
+            $installer->$method();
+        } else {
+            if ('install' === $method) {
+                call_user_func($installer[0]);
+            } else {
+                call_user_func($installer[1]);
+            }
+        }
     }
 }

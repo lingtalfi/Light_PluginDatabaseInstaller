@@ -49,7 +49,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [LightPluginDatabaseInstallerService::isInstalled](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L79-L83)
+See the source code for method [LightPluginDatabaseInstallerService::isInstalled](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L85-L89)
 
 
 See Also
