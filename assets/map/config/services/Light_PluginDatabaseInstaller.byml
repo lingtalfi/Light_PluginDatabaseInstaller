@@ -1,0 +1,3 @@
+plugin_database_installer:
+    instance: Ling\Light_PluginDatabaseInstaller\Service\LightPluginDatabaseInstallerService
+
