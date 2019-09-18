@@ -3,5 +3,7 @@ plugin_database_installer:
     methods:
         setAppDir:
             dir: ${app_dir}
+        setForceInstall:
+            bool: false
 
 

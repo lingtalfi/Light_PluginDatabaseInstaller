@@ -30,12 +30,23 @@ class LightPluginDatabaseInstallerService
 
 
     /**
+     * This property holds the forceInstall for this instance.
+     * If true, the isInstalled method will always return false.
+     * This might be useful for debugging purposes.
+     *
+     * @var bool
+     */
+    protected $forceInstall;
+
+
+    /**
      * Builds the LightPluginDatabaseInstallerService instance.
      */
     public function __construct()
     {
         $this->appDir = null;
         $this->installers = [];
+        $this->forceInstall = false;
     }
 
 
@@ -84,6 +95,9 @@ class LightPluginDatabaseInstallerService
      */
     public function isInstalled(string $pluginName): bool
     {
+        if (true === $this->forceInstall) {
+            return false;
+        }
         $installFile = $this->getFilePath($pluginName);
         return file_exists($installFile);
     }
@@ -117,11 +131,19 @@ class LightPluginDatabaseInstallerService
         }
     }
 
-
-
     //--------------------------------------------
     //
     //--------------------------------------------
+    /**
+     * Sets the forceInstall.
+     *
+     * @param bool $forceInstall
+     */
+    public function setForceInstall(bool $forceInstall)
+    {
+        $this->forceInstall = $forceInstall;
+    }
+
     /**
      * Sets the appDir.
      *

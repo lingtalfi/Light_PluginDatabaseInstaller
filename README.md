@@ -56,6 +56,11 @@ plugin_database_installer:
     methods:
         setAppDir:
             dir: ${app_dir}
+        setForceInstall:
+            bool: false
+
+
+
 
 
 
@@ -71,6 +76,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.2.0 -- 2019-09-18
+
+    - add LightPluginDatabaseInstallerService->forceInstall property
+    
 - 1.1.2 -- 2019-09-11
 
     - fix bad service initialization

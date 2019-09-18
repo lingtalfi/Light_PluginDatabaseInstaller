@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LightPluginDatabaseInstallerService::getFilePath](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L145-L148)
+See the source code for method [LightPluginDatabaseInstallerService::getFilePath](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L167-L170)
 
 
 See Also

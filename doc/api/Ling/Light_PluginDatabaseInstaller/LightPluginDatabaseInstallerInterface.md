@@ -4,7 +4,7 @@
 
 The LightPluginDatabaseInstallerInterface class
 ================
-2019-09-11 --> 2019-09-11
+2019-09-11 --> 2019-09-18
 
 
 
