@@ -16,7 +16,7 @@ Description
 ================
 
 
-public [LightPluginDatabaseInstallerService::install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/install.md)(string $pluginName) : void
+public [LightPluginDatabaseInstallerService::install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/install.md)(string $pluginName, ?int $installLevel = 1) : void
 
 
 
@@ -31,6 +31,10 @@ Parameters
 
 
 - pluginName
+
+    
+
+- installLevel
 
     
 
@@ -54,7 +58,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightPluginDatabaseInstallerService::install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L86-L96)
+See the source code for method [LightPluginDatabaseInstallerService::install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L77-L87)
 
 
 See Also

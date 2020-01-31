@@ -39,15 +39,6 @@ class LightPluginDatabaseInstallerService
     protected $forceInstall;
 
     /**
-     * This property holds the uninstallOrder for this instance.
-     * It's an array of plugin names, in the order in which they should be uninstalled.
-     *
-     * @var array
-     */
-    protected $uninstallOrder;
-
-
-    /**
      * Builds the LightPluginDatabaseInstallerService instance.
      */
     public function __construct()
@@ -55,7 +46,6 @@ class LightPluginDatabaseInstallerService
         $this->appDir = null;
         $this->installers = [];
         $this->forceInstall = false;
-        $this->uninstallOrder = [];
     }
 
 
@@ -81,14 +71,15 @@ class LightPluginDatabaseInstallerService
      * Installs the database part of the given plugin.
      *
      * @param string $pluginName
+     * @param int $installLevel = 1
      * @throws \Exception
      */
-    public function install(string $pluginName)
+    public function install(string $pluginName, int $installLevel = 1)
     {
         if (array_key_exists($pluginName, $this->installers)) {
             $this->executeByPluginName($pluginName, "install");
             $installFile = $this->getFilePath($pluginName);
-            FileSystemTool::mkfile($installFile, '');
+            FileSystemTool::mkfile($installFile, $installLevel);
 
         } else {
             throw new LightPluginDatabaseInstallerException("Plugin not registered: $pluginName.");
@@ -131,36 +122,29 @@ class LightPluginDatabaseInstallerService
      */
     public function uninstallAll()
     {
+
         $installDir = $this->appDir . "/config/data/Light_PluginDatabaseInstaller";
         $files = YorgDirScannerTool::getFilesWithExtension($installDir, 'installed', false);
-        $pluginNamesToFiles = [];
+
+
+        $levelToFiles = [];
         foreach ($files as $file) {
-            $pluginName = substr(basename($file), 0, -10);
-            $pluginNamesToFiles[$pluginName] = $file;
-        }
-
-
-        /**
-         * First uninstall the plugins in the order defined by the developer
-         */
-        $removed = [];
-        foreach ($this->uninstallOrder as $pluginName) {
-            $this->executeByPluginName($pluginName, "uninstall");
-            if (array_key_exists($pluginName, $pluginNamesToFiles)) {
-                $file = $pluginNamesToFiles[$pluginName];
-                FileSystemTool::remove($file);
-                $removed[] = $pluginName;
+            $level = (int)file_get_contents($file);
+            if (false === array_key_exists($level, $levelToFiles)) {
+                $levelToFiles[$level] = [];
             }
+            $levelToFiles[$level][] = $file;
         }
 
 
+        krsort($levelToFiles);
+
         /**
-         * Then remove remaining plugins (those not specified by the developer)
-         * in alphabetical order.
+         * Remove plugins in the reverse order they were installed in
          */
-        foreach ($files as $file) {
-            $pluginName = substr(basename($file), 0, -10);
-            if (false === in_array($pluginName, $removed, true)) {
+        foreach ($levelToFiles as $files) {
+            foreach ($files as $file) {
+                $pluginName = substr(basename($file), 0, -10);
                 $this->executeByPluginName($pluginName, "uninstall");
                 FileSystemTool::remove($file);
             }
@@ -189,17 +173,6 @@ class LightPluginDatabaseInstallerService
     {
         $this->appDir = $appDir;
     }
-
-    /**
-     * Sets the uninstallOrder.
-     *
-     * @param array $uninstallOrder
-     */
-    public function setUninstallOrder(array $uninstallOrder)
-    {
-        $this->uninstallOrder = $uninstallOrder;
-    }
-
 
 
     //--------------------------------------------

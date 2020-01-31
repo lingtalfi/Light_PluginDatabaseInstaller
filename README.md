@@ -76,6 +76,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.4.0 -- 2020-01-31
+
+    - update to fix LightPluginDatabaseInstallerService->uninstallAll method not taking into account the order of dependencies
+    
 - 1.3.0 -- 2019-10-03
 
     - add careless LightPluginDatabaseInstallerService->uninstallAll implementation, the dependency part
