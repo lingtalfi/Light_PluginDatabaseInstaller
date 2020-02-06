@@ -88,6 +88,15 @@ class LightPluginDatabaseInstallerService
 
 
     /**
+     * Returns the names of the registered plugins.
+     * @return array
+     */
+    public function getRegisteredPluginNames(): array
+    {
+        return array_keys($this->installers);
+    }
+
+    /**
      * Installs the database part of the given plugin.
      *
      * @param string $pluginName

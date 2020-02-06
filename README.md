@@ -75,6 +75,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.6.0 -- 2020-02-06
+
+    - add LightPluginDatabaseInstallerService->getRegisteredPluginNames method
+    
 - 1.5.0 -- 2020-02-06
 
     - add Light_PluginDatabaseInstaller.on_uninstall_before event

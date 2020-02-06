@@ -58,7 +58,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightPluginDatabaseInstallerService::executeByPluginName](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L220-L240)
+See the source code for method [LightPluginDatabaseInstallerService::executeByPluginName](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/Service/LightPluginDatabaseInstallerService.php#L229-L249)
 
 
 See Also
