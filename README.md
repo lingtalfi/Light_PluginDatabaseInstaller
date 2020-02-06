@@ -1,6 +1,6 @@
 Light_PluginDatabaseInstaller
 ===========
-2019-09-11
+2019-09-11 -> 2020-02-06
 
 
 
@@ -31,6 +31,7 @@ Summary
 - [Light_PluginDatabaseInstaller api](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller.md) (generated with [DocTools](https://github.com/lingtalfi/DocTools))
 - Pages
     - [Conception notes](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/pages/conception-notes.md)
+    - [Events](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/pages/events.md)
 
 - [Services](#services)
 
@@ -54,14 +55,12 @@ Here is the content of the service configuration file:
 plugin_database_installer:
     instance: Ling\Light_PluginDatabaseInstaller\Service\LightPluginDatabaseInstallerService
     methods:
+        setContainer:
+            container: @container()
         setAppDir:
             dir: ${app_dir}
         setForceInstall:
             bool: false
-
-
-
-
 
 
 ```
@@ -76,6 +75,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.5.0 -- 2020-02-06
+
+    - add Light_PluginDatabaseInstaller.on_uninstall_before event
+    
 - 1.4.0 -- 2020-01-31
 
     - update to fix LightPluginDatabaseInstallerService->uninstallAll method not taking into account the order of dependencies

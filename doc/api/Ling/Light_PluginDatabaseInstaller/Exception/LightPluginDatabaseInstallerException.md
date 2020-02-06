@@ -4,7 +4,7 @@
 
 The LightPluginDatabaseInstallerException class
 ================
-2019-09-11 --> 2020-01-31
+2019-09-11 --> 2020-02-06
 
 
 

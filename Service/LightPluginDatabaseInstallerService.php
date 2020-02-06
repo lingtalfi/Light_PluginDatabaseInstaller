@@ -5,6 +5,9 @@ namespace Ling\Light_PluginDatabaseInstaller\Service;
 
 use Ling\Bat\FileSystemTool;
 use Ling\DirScanner\YorgDirScannerTool;
+use Ling\Light\Events\LightEvent;
+use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_Events\Service\LightEventsService;
 use Ling\Light_PluginDatabaseInstaller\Exception\LightPluginDatabaseInstallerException;
 use Ling\Light_PluginDatabaseInstaller\LightPluginDatabaseInstallerInterface;
 
@@ -39,13 +42,30 @@ class LightPluginDatabaseInstallerService
     protected $forceInstall;
 
     /**
+     * This property holds the container for this instance.
+     * @var LightServiceContainerInterface
+     */
+    protected $container;
+
+    /**
      * Builds the LightPluginDatabaseInstallerService instance.
      */
     public function __construct()
     {
         $this->appDir = null;
         $this->installers = [];
-        $this->forceInstall = false;
+        $this->forceInstall = false;;
+        $this->container = null;
+    }
+
+    /**
+     * Sets the container.
+     *
+     * @param LightServiceContainerInterface $container
+     */
+    public function setContainer(LightServiceContainerInterface $container)
+    {
+        $this->container = $container;
     }
 
 
@@ -195,9 +215,18 @@ class LightPluginDatabaseInstallerService
      *
      * @param string $pluginName
      * @param string $method
+     * @throws \Exception
      */
     protected function executeByPluginName(string $pluginName, string $method)
     {
+        /**
+         * @var $events LightEventsService
+         */
+        $events = $this->container->get("events");
+        $data = LightEvent::createByContainer($this->container);
+        $data->setVar("pluginName", $pluginName);
+        $events->dispatch("Light_PluginDatabaseInstaller.on_uninstall_before", $data);
+
         $installer = $this->installers[$pluginName];
         if ($installer instanceof LightPluginDatabaseInstallerInterface) {
             $installer->$method();

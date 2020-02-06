@@ -4,7 +4,7 @@
 
 The LightPluginDatabaseInstallerService class
 ================
-2019-09-11 --> 2020-01-31
+2019-09-11 --> 2020-02-06
 
 
 
@@ -28,9 +28,11 @@ class <span class="pl-k">LightPluginDatabaseInstallerService</span>  {
     - protected string [$appDir](#property-appDir) ;
     - protected array [$installers](#property-installers) ;
     - protected bool [$forceInstall](#property-forceInstall) ;
+    - protected [Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) [$container](#property-container) ;
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/__construct.md)() : void
+    - public [setContainer](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : void
     - public [registerInstaller](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/registerInstaller.md)(string $pluginName, $installer) : void
     - public [install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/install.md)(string $pluginName, ?int $installLevel = 1) : void
     - public [isInstalled](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/isInstalled.md)(string $pluginName) : bool
@@ -71,12 +73,19 @@ Properties
     
     
 
+- <span id="property-container"><b>container</b></span>
+
+    This property holds the container for this instance.
+    
+    
+
 
 
 Methods
 ==============
 
 - [LightPluginDatabaseInstallerService::__construct](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/__construct.md) &ndash; Builds the LightPluginDatabaseInstallerService instance.
+- [LightPluginDatabaseInstallerService::setContainer](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/setContainer.md) &ndash; Sets the container.
 - [LightPluginDatabaseInstallerService::registerInstaller](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/registerInstaller.md) &ndash; Registers the given installer for the given plugin.
 - [LightPluginDatabaseInstallerService::install](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/install.md) &ndash; Installs the database part of the given plugin.
 - [LightPluginDatabaseInstallerService::isInstalled](https://github.com/lingtalfi/Light_PluginDatabaseInstaller/blob/master/doc/api/Ling/Light_PluginDatabaseInstaller/Service/LightPluginDatabaseInstallerService/isInstalled.md) &ndash; Returns whether the given plugin's database part is installed.
