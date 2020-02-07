@@ -1,9 +1,18 @@
 Light_PluginDatabaseInstaller
 ===========
-2019-09-11 -> 2020-02-06
+2019-09-11 -> 2020-02-07
 
 
 
+Deprecation notice
+======
+Warning: this plugin is now deprecated in favour of the better [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller) plugin
+
+
+
+
+Overview
+======
 A [light](https://github.com/lingtalfi/Light) service to help plugin install their database part.
 
 
@@ -75,6 +84,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.6.1 -- 2020-02-07
+
+    - add deprecation notice
+    
 - 1.6.0 -- 2020-02-06
 
     - add LightPluginDatabaseInstallerService->getRegisteredPluginNames method
