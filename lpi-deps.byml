@@ -75,3 +75,9 @@
     - Ling:DirScanner:1.13.4+
     - Ling:Light:0.69.30+
     - Ling:Light_Events:1.9.7+
+
+1.6.5: 
+    - Ling:Bat:1.312+
+    - Ling:DirScanner:1.13.5+
+    - Ling:Light:0.70.2+
+    - Ling:Light_Events:1.10.2+
