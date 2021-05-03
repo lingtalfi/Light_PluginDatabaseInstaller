@@ -89,6 +89,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.6.7 -- 2021-05-03
+
+    - Update dependencies to Ling.Light_Events (pushed by SubscribersUtil)
+
 - 1.6.6 -- 2021-05-03
 
     - Update dependencies to Ling.Light_Events (pushed by SubscribersUtil)
