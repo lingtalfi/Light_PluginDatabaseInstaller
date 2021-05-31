@@ -89,6 +89,10 @@ plugin_database_installer:
 History Log
 =============
 
+- 1.6.8 -- 2021-05-31
+
+    - Removing trailing plus in lpi-deps file (to work with Light_PlanetInstaller:2.0.0 api
+
 - 1.6.7 -- 2021-05-03
 
     - Update dependencies to Ling.Light_Events (pushed by SubscribersUtil)
